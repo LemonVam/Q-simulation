@@ -1,0 +1,89 @@
+
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+
+\title{第2章　量子比特（Qubit）基础}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{什么是 Qubit？}
+
+在经典计算中，比特（bit）是最小的信息单位，其取值为 $0$ 或 $1$。  
+而量子计算中的量子比特（Qubit）是受量子力学原理支配的信息单位，其状态是经典 0 与 1 的线性叠加，表示为：
+
+\[
+|\psi\rangle = \alpha |0\rangle + \beta |1\rangle
+\]
+
+其中：
+\begin{itemize}
+    \item $\alpha, \beta \in \mathbb{C}$ 为复数幅度（称为概率幅）
+    \item 满足归一化条件：$|\alpha|^2 + |\beta|^2 = 1$
+\end{itemize}
+
+Qubit 的这一性质使其具备\textbf{叠加态（superposition）}，可以在计算过程中并行表示多个状态，远超过经典比特的表达能力。
+
+\section{Qubit 的几何表示：Bloch Sphere}
+
+任意 Qubit 的状态可以表示为三维球面（Bloch Sphere）上的一个点。Bloch 球上的任意纯态具有如下形式：
+
+\[
+|\psi\rangle = \cos\left(\frac{\theta}{2}\right) |0\rangle + e^{i\phi} \sin\left(\frac{\theta}{2}\right) |1\rangle
+\]
+
+其中：
+\begin{itemize}
+    \item $\theta \in [0, \pi]$：极角（纬度）
+    \item $\phi \in [0, 2\pi]$：方位角（经度）
+\end{itemize}
+
+例如：
+\[
+|+\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)
+\]
+
+\section{多 Qubit 系统与纠缠态}
+
+多个 Qubit 可组成张量积系统，其维度呈指数增长：  
+$n$ 个 Qubit 对应 $2^n$ 维的复向量空间。
+
+特别地，量子计算中还存在\textbf{纠缠态（entangled state）}，即系统整体不能被拆解为各 Qubit 的乘积态。例如：
+
+\[
+|\Phi^+\rangle = \frac{1}{\sqrt{2}} (|00\rangle + |11\rangle)
+\]
+
+这是最常见的 Bell 态之一，具有如下特性：
+\begin{itemize}
+    \item 单独测量任意一个 Qubit 是随机的
+    \item 但两个 Qubit 的测量结果始终一致（完美相关性）
+\end{itemize}
+
+纠缠态无法通过经典手段模拟，是量子计算中超越经典计算能力的关键资源。
+
+\section{Qubit 与经典比特的对比}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{属性} & \textbf{经典比特（bit）} & \textbf{量子比特（qubit）} \\ \midrule
+状态空间 & $\{0, 1\}$ & $\alpha|0\rangle + \beta|1\rangle$ \\
+表达能力 & 离散 & 连续（复球面） \\
+可叠加性 & 无 & 有（Superposition） \\
+纠缠性 & 无 & 有（Entanglement） \\
+测量 & 不变 & 状态坍缩为 0 或 1，具有概率分布 \\ \bottomrule
+\end{tabular}
+\caption{Qubit 与经典比特的对比}
+\end{table}
+
+\end{document}
